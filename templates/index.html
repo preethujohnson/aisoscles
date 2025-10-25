@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div class="hero-inner">
+    <h1>AIsosceles</h1>
+    <p class="hero-sub">Balancing Human Logic and Artificial Intelligence — a warm learning space.</p>
+    <a class="btn" href="{{ url_for('study_sessions') }}">Start Learning</a>
+  </div>
+  <div class="hero-triangle"></div>
+</section>
+
+<section class="story">
+  <h2>How AIsosceles Emerged</h2>
+  <div class="story-body">
+    <p>{{ story_text }}</p>
+  </div>
+</section>
+
+<section class="highlights">
+  <div class="col">
+    <h3>Recent Study Sessions</h3>
+    <ul>
+      {% for s in latest_study %}
+      <li><a href="{{ url_for('study_session_post', post_name=s.filename[:-3]) }}">{{ s.title }}</a></li>
+      {% else %}
+      <li>No sessions yet.</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="col">
+    <h3>Latest Blog Posts</h3>
+    <ul>
+      {% for b in latest_blog %}
+      <li><a href="{{ url_for('blog_post', post_name=b.filename[:-3]) }}">{{ b.title }}</a></li>
+      {% else %}
+      <li>No posts yet.</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <h2>Study Sessions — raw, bite-sized lessons</h2>
+  <p>Mother-and-child style learning notes and sessions. Each session is a short, simple markdown post.</p>
+  <ul class="post-list">
+    {% for s in sessions %}
+      <li><a href="{{ url_for('study_session_post', post_name=s.filename[:-3]) }}">{{ s.title }}</a></li>
+    {% else %}
+      <li>No study sessions yet. Add markdown files to content/study_sessions/</li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}

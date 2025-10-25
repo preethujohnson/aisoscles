@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <h2>Ebooks</h2>
+  <p>Digital guides and short manuals. For now these are showcased — payment integration can be added later.</p>
+
+  {% if ebooks %}
+  <div class="ebook-grid">
+    {% for book in ebooks %}
+      <div class="ebook-card">
+        <img src="{{ url_for('static', filename='images/' ~ book.cover) }}" alt="{{ book.title }} cover">
+        <h4>{{ book.title }}</h4>
+        <p class="meta">{{ book.subtitle or '' }}</p>
+        <p>{{ book.excerpt or '' }}</p>
+        <div class="actions">
+          <a class="btn-secondary" href="{{ book.sample_url or '#' }}">Read sample</a>
+          <a class="btn" href="#">Buy (coming soon)</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  {% else %}
+    <p>No ebooks published yet. Add `content/ebooks.json` to list your books.</p>
+  {% endif %}
+</section>
+{% endblock %}

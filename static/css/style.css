@@ -1,0 +1,195 @@
+/* Warm nostalgic theme - minimal responsive layout */
+:root{
+  --bg: #FAF3E0;
+  --ink: #2E2E2E;
+  --deep: #5E503F;
+  --gold: #C6A664;
+  --muted: #9A7B4F;
+  --paper: #FAF3E0;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: 'Lora', serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height:1.6;
+}
+
+/* container */
+.container{
+  width: min(1100px, 94%);
+  margin: 0 auto;
+}
+
+/* header */
+.site-header{
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  background: var(--deep);
+  color: var(--paper);
+  z-index:1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 0;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.logo{
+  width:48px;
+  height:48px;
+  object-fit:contain;
+  filter: saturate(0.6);
+}
+.brand-name{
+  font-family: 'Cormorant Garamond', serif;
+  font-size:1.2rem;
+  letter-spacing:1px;
+}
+.tagline{
+  font-size:0.75rem;
+  opacity:0.9;
+}
+
+/* nav */
+.main-nav a{
+  color:var(--paper);
+  margin-left:18px;
+  text-decoration:none;
+  font-weight:600;
+}
+.main-nav a:hover{ color: var(--gold); }
+
+/* main spacing to account for fixed header */
+.site-main{ padding-top:98px; padding-bottom:60px; }
+
+/* hero */
+.hero{
+  min-height:60vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  text-align:center;
+  padding:40px 0;
+}
+.hero-inner h1{
+  margin:0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size:3rem;
+  color:var(--deep);
+}
+.hero-sub{ margin-top:10px; color:var(--ink); font-size:1.1rem; }
+.btn{
+  display:inline-block;
+  background:var(--gold);
+  color:var(--paper);
+  padding:10px 18px;
+  border-radius:6px;
+  text-decoration:none;
+  margin-top:18px;
+  font-weight:700;
+}
+.btn-secondary{
+  display:inline-block;
+  background:transparent;
+  color:var(--deep);
+  padding:8px 14px;
+  border-radius:6px;
+  border:1px solid rgba(94,80,63,0.12);
+  text-decoration:none;
+  margin-right:10px;
+}
+
+/* triangle watermark */
+.hero-triangle{
+  position:absolute;
+  inset:0;
+  background-image: radial-gradient(circle at 30% 30%, rgba(94,80,63,0.03), transparent 10%),
+                    radial-gradient(circle at 70% 70%, rgba(94,80,63,0.03), transparent 12%);
+  pointer-events:none;
+}
+
+/* sections */
+.section{ padding:32px 0; }
+.story-body{
+  background: rgba(94,80,63,0.03);
+  padding:16px;
+  border-radius:8px;
+  border-left:3px solid var(--muted);
+}
+
+/* post list */
+.post-list{ list-style:none; padding-left:0; }
+.post-list li{ padding:6px 0; }
+
+/* grid for ebooks */
+.ebook-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:18px; margin-top:16px; }
+.ebook-card{
+  background: rgba(94,80,63,0.03);
+  padding:12px;
+  border-radius:8px;
+  min-height:200px;
+}
+.ebook-card img{ width:100%; height:140px; object-fit:cover; border-radius:4px; }
+
+/* footer */
+.site-footer{
+  background: var(--deep);
+  color:var(--paper);
+  padding:16px 0;
+  position:relative;
+  margin-top:40px;
+}
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.subscribe-form input{
+  padding:8px 10px;
+  border-radius:4px;
+  border:1px solid rgba(0,0,0,0.06);
+}
+.subscribe-form button{
+  background:var(--gold);
+  color:var(--paper);
+  border:none;
+  padding:8px 10px;
+  border-radius:4px;
+  margin-left:6px;
+}
+
+/* contact section */
+.contact-section{ padding:20px 0; background:transparent; }
+#contact-form input, #contact-form textarea{
+  width:100%;
+  padding:10px;
+  margin:6px 0;
+  border-radius:6px;
+  border:1px solid rgba(0,0,0,0.08);
+}
+#contact-form button{ background:var(--deep); color:var(--paper); padding:8px 12px; border-radius:6px; border:none; }
+
+/* flash messages */
+.flash-area{ margin:12px 0; }
+.flash{ padding:10px; border-radius:6px; margin-bottom:8px; }
+.flash.success{ background:#e6f7ea; color:#1f6f3f; border-left:4px solid #3aa655; }
+.flash.danger{ background:#fff1f0; color:#8b1d1d; border-left:4px solid #e04b4b; }
+
+/* small screens */
+@media (max-width:700px){
+  .header-inner{ flex-direction:column; gap:8px; }
+  .main-nav{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; }
+  .brand-text{ text-align:center; }
+}

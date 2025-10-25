@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AIsosceles</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Lora&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <!-- Replace logo.png with your logo -->
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="AIsosceles logo" class="logo">
+        <div class="brand-text">
+          <div class="brand-name">AIsosceles</div>
+          <div class="tagline">Balancing Human Logic &amp; AI</div>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('study_sessions') }}">Study Sessions</a>
+        <a href="{{ url_for('ebooks') }}">Ebooks</a>
+        <a href="{{ url_for('books') }}">Books</a>
+        <a href="{{ url_for('blog') }}">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-main">
+    <div class="container">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="flash-area">
+            {% for category, msg in messages %}
+              <div class="flash {{category}}">{{ msg }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      {% block content %}{% endblock %}
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© {{ now().year if now is defined else "2025" }} AIsosceles</div>
+      <div class="footer-actions">
+        <form action="{{ url_for('subscribe') }}" method="post" class="subscribe-form">
+          <input name="email" type="email" placeholder="Your email" required>
+          <button type="submit">Join</button>
+        </form>
+        <a href="#contact-form" class="contact-link">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- contact modal anchor -->
+  <section id="contact-section" class="contact-section">
+    <div class="container">
+      <h3>Contact</h3>
+      <form id="contact-form" action="{{ url_for('contact') }}" method="post">
+        <input name="name" placeholder="Your name (optional)">
+        <input name="email" placeholder="Email" required>
+        <textarea name="message" placeholder="Message" rows="4" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </section>
+
+</body>
+</html>
