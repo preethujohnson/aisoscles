@@ -18,6 +18,20 @@
   gtag('config', 'G-YZZTK41KTW');
 </script>
 </head>
+<script>
+  function updateVisitorCount() {
+    // Randomized visitor count for now (simulate live traffic)
+    const count = Math.floor(Math.random() * 20) + 1;
+    document.getElementById('visitor-counter').innerText = count;
+  }
+
+  // Initial update
+  updateVisitorCount();
+
+  // Update every 10 seconds
+  setInterval(updateVisitorCount, 10000);
+</script>
+
 <body>
   <header class="site-header">
     <div class="container header-inner">
@@ -56,17 +70,23 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>© {{ now().year if now is defined else "2025" }} AIsosceles</div>
-      <div class="footer-actions">
-        <form action="{{ url_for('subscribe') }}" method="post" class="subscribe-form">
-          <input name="email" type="email" placeholder="Your email" required>
-          <button type="submit">Join</button>
-        </form>
-        <a href="#contact-form" class="contact-link">Contact</a>
-      </div>
+  <div class="container footer-inner">
+    <div>© {{ now().year if now is defined else "2025" }} AIsosceles</div>
+    <div class="footer-actions">
+      <form action="{{ url_for('subscribe') }}" method="post" class="subscribe-form">
+        <input name="email" type="email" placeholder="Your email" required>
+        <button type="submit">Join</button>
+      </form>
+      <a href="#contact-form" class="contact-link">Contact</a>
     </div>
-  </footer>
+    <!-- Visitor counter -->
+    <div class="visitor-count">
+      <img src="{{ url_for('static', filename='images/visitor-icon.png') }}" alt="visitor" class="visitor-icon">
+      Visitors Online: <span id="visitor-counter">0</span>
+    </div>
+  </div>
+</footer>
+
 
   <!-- contact modal anchor -->
   <section id="contact-section" class="contact-section">

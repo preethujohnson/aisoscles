@@ -193,3 +193,17 @@ body{
   .main-nav{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; }
   .brand-text{ text-align:center; }
 }
+.visitor-count {
+  margin-top: 10px;
+  font-family: 'Cormorant Garamond', serif;
+  color: #5a3e36; /* vintage warm brown */
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.visitor-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 6px;
+}
